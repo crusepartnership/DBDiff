@@ -10,7 +10,6 @@ class DiffSorter {
         "AddTable",
 
         "DeleteData",
-        "DropTable",
 
         "AlterTableEngine",
         "AlterTableCollation",
@@ -19,13 +18,15 @@ class DiffSorter {
         "AlterTableChangeColumn",
         "AlterTableDropColumn",
 
+        "AlterTableAddConstraint",
+        "AlterTableChangeConstraint",
+        "AlterTableDropConstraint",
+
         "AlterTableAddKey",
         "AlterTableChangeKey",
         "AlterTableDropKey",
 
-        "AlterTableAddConstraint",
-        "AlterTableChangeConstraint",
-        "AlterTableDropConstraint",
+        "DropTable",
 
         "InsertData",
         "UpdateData"
@@ -38,8 +39,6 @@ class DiffSorter {
         "InsertData",
         "AddTable",
 
-        "DropTable",
-
         "AlterTableEngine",
         "AlterTableCollation",
 
@@ -47,13 +46,15 @@ class DiffSorter {
         "AlterTableChangeColumn",
         "AlterTableDropColumn",
 
+        "AlterTableAddConstraint",
+        "AlterTableChangeConstraint",
+        "AlterTableDropConstraint",
+
         "AlterTableAddKey",
         "AlterTableChangeKey",
         "AlterTableDropKey",
 
-        "AlterTableAddConstraint",
-        "AlterTableChangeConstraint",
-        "AlterTableDropConstraint",
+        "DropTable",
 
         "DeleteData",
         "UpdateData"
@@ -63,7 +64,7 @@ class DiffSorter {
         usort($diff, [$this, 'compare'.ucfirst($type)]);
         return $diff;
     }
-    
+
     private function compareUp($a, $b) {
         return $this->compare($this->up_order, $a, $b);
     }
@@ -80,7 +81,7 @@ class DiffSorter {
         $sqlGenClassB = $reflectionB->getShortName();
         $indexA = $order[$sqlGenClassA];
         $indexB = $order[$sqlGenClassB];
-        
+
         if ($indexA === $indexB) return 0;
         else if ($indexA > $indexB) return 1;
         return -1;
